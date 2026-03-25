@@ -130,7 +130,6 @@ To-Be (ML + система поддержки решений)
 Основной дашборд (Digital Twin)
 ![dashboard](demo/screenshots/dashboard.png)
 
-<img width="1895" height="917" alt="dashboard" src="https://github.com/user-attachments/assets/1c303ec9-81e7-416d-8599-81caf5bb0f79" />
 
 
 
@@ -140,7 +139,6 @@ To-Be (ML + система поддержки решений)
 Пример рекомендации
 ![recommendation](demo/screenshots/recommendation.png)
 
-<img width="715" height="452" alt="recommendation" src="https://github.com/user-attachments/assets/4e4fe712-ca21-42ec-961e-191674f601cc" />
 
 
 
@@ -153,7 +151,6 @@ To-Be (ML + система поддержки решений)
 ![review](demo/screenshots/review.png)
 
 
-<img width="836" height="747" alt="review" src="https://github.com/user-attachments/assets/1b81e0a4-012a-4787-bac8-369e15e5575b" />
 
 
 
@@ -164,7 +161,7 @@ To-Be (ML + система поддержки решений)
 ![api](demo/screenshots/api.png)
 
 
-<img width="815" height="226" alt="api" src="https://github.com/user-attachments/assets/16480baf-a3d7-4258-b839-3bbc5811e9b1" />
+
 
 
 
@@ -176,7 +173,6 @@ To-Be (ML + система поддержки решений)
 ![streamer](demo/screenshots/streamer.png)
 
 
-<img width="762" height="660" alt="streamer" src="https://github.com/user-attachments/assets/e89851d4-61cd-4cf7-9fa5-05a3857a5211" />
 
 
 
