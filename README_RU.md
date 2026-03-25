@@ -128,7 +128,7 @@ To-Be (ML + система поддержки решений)
 
 Демо
 Основной дашборд (Digital Twin)
-![Dashboard](demo/screenshots/dashboard.png)
+![dashboard](demo/screenshots/dashboard.png)
 
 
 
@@ -137,7 +137,7 @@ To-Be (ML + система поддержки решений)
 
 
 Пример рекомендации
-![Recommendation](demo/screenshots/recommendation.png)
+![recommendation](demo/screenshots/recommendation.png)
 
 
 
@@ -150,7 +150,7 @@ To-Be (ML + система поддержки решений)
 
 
 Отчёт.
-![API](demo/screenshots/review.png)
+![review](demo/screenshots/review.png)
 
 
 
@@ -161,7 +161,7 @@ To-Be (ML + система поддержки решений)
 
 
 Взаимодействие с API
-![API](demo/screenshots/api.png)
+![api](demo/screenshots/api.png)
 
 
 
@@ -173,7 +173,7 @@ To-Be (ML + система поддержки решений)
 
 
 Симуляция данных в реальном времени
-![Streamer](demo/screenshots/streamer.png)
+![streamer](demo/screenshots/streamer.png)
 
 
 
