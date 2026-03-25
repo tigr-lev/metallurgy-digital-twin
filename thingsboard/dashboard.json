@@ -1,0 +1,413 @@
+{
+  "title": "[MET] Ladle Operator Panel",
+  "image": null,
+  "mobileHide": false,
+  "mobileOrder": null,
+  "configuration": {
+    "description": "",
+    "widgets": {
+      "7553455a-871d-a294-641b-7c83d34e45c7": {
+        "typeFullFqn": "system.cards.html_value_card",
+        "type": "latest",
+        "sizeX": 7.5,
+        "sizeY": 3,
+        "config": {
+          "datasources": [
+            {
+              "type": "entity",
+              "name": "",
+              "entityAliasId": "89b7e898-f67b-87ec-7c30-f4ed5b613977",
+              "dataKeys": [
+                {
+                  "name": "predicted",
+                  "type": "timeseries",
+                  "label": "predicted",
+                  "color": "#2196f3",
+                  "settings": {},
+                  "_hash": 0.059366503415154925
+                },
+                {
+                  "name": "target",
+                  "type": "timeseries",
+                  "label": "target",
+                  "color": "#4caf50",
+                  "settings": {},
+                  "_hash": 0.428703933282657
+                },
+                {
+                  "name": "delta_energy",
+                  "type": "timeseries",
+                  "label": "delta_energy",
+                  "color": "#f44336",
+                  "settings": {},
+                  "_hash": 0.6446880351307981
+                },
+                {
+                  "name": "status",
+                  "type": "timeseries",
+                  "label": "status",
+                  "color": "#ffc107",
+                  "settings": {},
+                  "_hash": 0.41882070336681154
+                },
+                {
+                  "name": "decision",
+                  "type": "timeseries",
+                  "label": "decision",
+                  "color": "#607d8b",
+                  "settings": {},
+                  "_hash": 0.6045782906285125
+                },
+                {
+                  "name": "action",
+                  "type": "timeseries",
+                  "label": "action",
+                  "color": "#9c27b0",
+                  "settings": {},
+                  "_hash": 0.9348283119355174
+                },
+                {
+                  "name": "severity",
+                  "type": "timeseries",
+                  "label": "severity",
+                  "color": "#8bc34a",
+                  "settings": {},
+                  "_hash": 0.07358744843172782
+                },
+                {
+                  "name": "message",
+                  "type": "timeseries",
+                  "label": "message",
+                  "color": "#3f51b5",
+                  "settings": {},
+                  "_hash": 0.2631331830322772
+                }
+              ],
+              "alarmFilterConfig": {
+                "statusList": [
+                  "ACTIVE"
+                ]
+              }
+            }
+          ],
+          "timewindow": {
+            "displayValue": "",
+            "selectedTab": 0,
+            "realtime": {
+              "realtimeType": 1,
+              "interval": 1000,
+              "timewindowMs": 60000,
+              "quickInterval": "CURRENT_DAY",
+              "hideInterval": false,
+              "hideLastInterval": false,
+              "hideQuickInterval": false
+            },
+            "history": {
+              "historyType": 0,
+              "interval": 1000,
+              "timewindowMs": 60000,
+              "fixedTimewindow": {
+                "startTimeMs": 1774106660310,
+                "endTimeMs": 1774193060310
+              },
+              "quickInterval": "CURRENT_DAY",
+              "hideInterval": false,
+              "hideLastInterval": false,
+              "hideFixedInterval": false,
+              "hideQuickInterval": false
+            },
+            "aggregation": {
+              "type": "AVG",
+              "limit": 25000
+            }
+          },
+          "showTitle": false,
+          "backgroundColor": "#fff",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "0px",
+          "settings": {
+            "cardHtml": "<div style=\"\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    gap: 20px;\r\n    padding: 25px;\r\n    background: linear-gradient(135deg, #1e272e 0%, #0f1418 100%);\r\n    border-radius: 12px;\r\n    font-family: 'Segoe UI', sans-serif;\r\n    color: #ecf0f1;\r\n    box-shadow: 0 12px 40px rgba(0,0,0,0.6);\r\n\">\r\n\r\n    <div style=\"\r\n        width: 100%;\r\n        display: flex;\r\n        justify-content: space-between;\r\n        align-items: center;\r\n        border-bottom: 1px solid rgba(255,255,255,0.1);\r\n        padding-bottom: 10px;\r\n    \">\r\n        <div style=\"font-size: 14px; font-weight: bold; color: #ecf0f1;\">\r\n            Рекомендательная система температуры плавки\r\n        </div>\r\n        <div style=\"\r\n            display: flex;\r\n            align-items: center;\r\n            gap: 5px;\r\n            color: ${status === 'unreachable' ? '#e74c3c' : '#27ae60'};\r\n            font-weight: bold;\r\n            font-size: 12px;\r\n            text-transform: uppercase;\r\n        \">\r\n            <span style=\"font-size: 14px;\">●</span> ${status}\r\n        </div>\r\n    </div>\r\n\r\n    <div style=\"display: flex; gap: 40px; align-items: center; width: 100%; justify-content: center;\">\r\n\r\n        <svg width=\"180\" height=\"260\" viewBox=\"0 0 200 280\">\r\n            <defs>\r\n                <radialGradient id=\"moltenGlow\" cx=\"50%\" cy=\"50%\" r=\"50%\">\r\n                    <stop offset=\"0%\" stop-color=\"\r\n                    ${decision === 'overheat' ? '#ff7675' : \r\n                      decision === 'underheat' ? '#74b9ff' : \r\n                      decision === 'inefficient' ? '#ffeaa7' : \r\n                      '#55efc4'}\"/>\r\n                    <stop offset=\"100%\" stop-color=\"#c0392b\"/>\r\n                </radialGradient>\r\n                \r\n                <clipPath id=\"ladleClip\">\r\n                    <path d=\"M 50 55 L 150 55 L 132 230 L 68 230 Z\" />\r\n                </clipPath>\r\n            </defs>\r\n\r\n            <ellipse cx=\"100\" cy=\"255\" rx=\"55\" ry=\"8\" fill=\"#000\" opacity=\"0.4\"/>\r\n            <path d=\"M 40 40 L 160 40 L 142 240 L 58 240 Z\" fill=\"#2c3e50\" />\r\n\r\n            <rect x=\"40\" y=\"${160 - (predicted - 1580)*1.5}\" width=\"120\" height=\"200\"\r\n                  fill=\"url(#moltenGlow)\" clip-path=\"url(#ladleClip)\" opacity=\"0.9\" />\r\n\r\n            <g opacity=\"${action === 'increase_energy' ? '1' : '0.2'}\">\r\n                <rect x=\"85\" y=\"5\" width=\"8\" height=\"100\" fill=\"#1e1e1e\" rx=\"2\" />\r\n                <rect x=\"107\" y=\"5\" width=\"8\" height=\"100\" fill=\"#1e1e1e\" rx=\"2\" />\r\n                <circle cx=\"100\" cy=\"115\" r=\"10\" fill=\"#fff\" opacity=\"${action === 'increase_energy' ? '0.4' : '0'}\" />\r\n            </g>\r\n        </svg>\r\n\r\n        <div style=\"display: flex; flex-direction: column; gap: 15px; width: 300px;\">\r\n\r\n            <div style=\"\r\n                padding: 12px;\r\n                border-radius: 8px;\r\n                font-weight: bold;\r\n                text-align: center;\r\n                background:\r\n                ${decision === 'overheat' ? 'rgba(255, 107, 107, 0.12)' :\r\n                  decision === 'underheat' ? 'rgba(77, 171, 247, 0.12)' :\r\n                  decision === 'inefficient' ? 'rgba(241, 196, 15, 0.12)' :\r\n                  'rgba(46, 204, 113, 0.12)'};\r\n                color:\r\n                ${decision === 'overheat' ? '#ff6b6b' :\r\n                  decision === 'underheat' ? '#4dabf7' :\r\n                  decision === 'inefficient' ? '#f1c40f' :\r\n                  '#2ecc71'};\r\n            \">\r\n                ${decision === 'overheat' ? '⚠ ТЕМПЕРАТУРА ВЫШЕ НОРМЫ' :\r\n                  decision === 'underheat' ? '⬆ ТРЕБУЕТСЯ НАГРЕВ' :\r\n                  decision === 'inefficient' ? '💡 ИЗБЫТОЧНАЯ ЭНЕРГИЯ' :\r\n                  '✔ РЕЖИМ СТАБИЛЕН'}\r\n            </div>\r\n\r\n            <div style=\"font-size: 14px; font-weight: bold; display: flex; align-items: center; gap: 10px;\">\r\n                <span style=\"font-size: 18px;\">\r\n                    ${action === 'reduce_energy' ? '⬇' : action === 'increase_energy' ? '⬆' : '➡'}\r\n                </span>\r\n                ${action === 'reduce_energy' ? 'СНИЗИТЬ МОЩНОСТЬ' :\r\n                  action === 'increase_energy' ? 'ВКЛЮЧИТЬ ЭЛЕКТРОДЫ' :\r\n                  'ПОДДЕРЖИВАТЬ ТЕКУЩИЙ ХОД'}\r\n            </div>\r\n\r\n            <div style=\"\r\n                display: flex;\r\n                flex-direction: column;\r\n                gap: 10px;\r\n                padding: 15px;\r\n                background: rgba(255,255,255,0.03);\r\n                border-radius: 8px;\r\n            \">\r\n                <div style=\"display: flex; justify-content: space-between; font-size: 14px;\">\r\n                    <span style=\"color:#95a5a6;\">Прогноз:</span>\r\n                    <span style=\"font-weight: bold;\">${predicted} °C</span>\r\n                </div>\r\n                <div style=\"display: flex; justify-content: space-between; font-size: 14px;\">\r\n                    <span style=\"color:#95a5a6;\">Цель:</span>\r\n                    <span style=\"font-weight: bold;\">${target} °C</span>\r\n                </div>\r\n                <div style=\"display: flex; justify-content: space-between; margin-top: 5px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);\">\r\n                    <span style=\"color:#95a5a6;\">Коррекция (ΔE):</span>\r\n                    <span style=\"font-weight: bold; color:${delta_energy < 0 ? '#4dabf7' : '#ff6b6b'};\">\r\n                        ${delta_energy > 0 ? '+' : ''}${delta_energy} MJ\r\n                    </span>\r\n                </div>\r\n                <div style=\"display: flex; justify-content: space-between; align-items: center;\">\r\n                    <span style=\"color:#95a5a6;\">Критичность:</span>\r\n                    <div style=\"display: flex; align-items: center; gap: 8px;\">\r\n                        <div style=\"width: 8px; height: 8px; border-radius: 50%; background: ${severity === 'critical' ? '#ff3b3b' : severity === 'warning' ? '#f39c12' : '#27ae60'};\"></div>\r\n                        <span style=\"font-weight: bold; text-transform: uppercase; font-size: 11px;\">${severity}</span>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n\r\n            <div style=\"\r\n                font-size: 12px;\r\n                color:#bdc3c7;\r\n                padding: 10px;\r\n                border-left: 3px solid #7f8c8d;\r\n                background: rgba(0,0,0,0.2);\r\n                font-style: italic;\r\n                border-radius: 0 4px 4px 0;\r\n            \">\r\n                \"${message}\"\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>",
+            "cardCss": ".card {\n   width: 100%;\n   height: 100%;\n   border: 2px solid #ccc;\n   box-sizing: border-box;\n}\n\n.card .content {\n   padding: 20px;\n   display: flex;\n   flex-direction: row;\n   align-items: center;\n   justify-content: space-around;\n   height: 100%;\n   box-sizing: border-box;\n}\n\n.card .content .column {\n   display: flex;\n   flex-direction: column;    \n   justify-content: space-around;\n   height: 100%;\n}\n\n.card h1 {\n    text-transform: uppercase;\n    color: #999;\n    font-size: 20px;\n    font-weight: bold;\n    margin: 0;\n    padding-bottom: 10px;\n    line-height: 32px;\n}\n\n.card .value {\n    font-size: 38px;\n    font-weight: 200;\n}\n\n.card .description {\n    font-size: 20px;\n    color: #999;\n}\n"
+          },
+          "title": "HTML Value Card",
+          "dropShadow": false,
+          "enableFullscreen": true,
+          "widgetStyle": {},
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "useDashboardTimewindow": true,
+          "showLegend": false,
+          "actions": {},
+          "displayTimewindow": true
+        },
+        "row": 0,
+        "col": 0,
+        "id": "7553455a-871d-a294-641b-7c83d34e45c7"
+      },
+      "7ad55248-1651-5a19-2c37-ae206def27b5": {
+        "typeFullFqn": "system.cards.markdown_card",
+        "type": "latest",
+        "sizeX": 5,
+        "sizeY": 3.5,
+        "config": {
+          "datasources": [
+            {
+              "type": "device",
+              "name": "",
+              "deviceId": "45a168d0-25f4-11f1-8fd8-2b292c097180",
+              "dataKeys": [
+                {
+                  "name": "stat_critical",
+                  "type": "timeseries",
+                  "label": "stat_critical",
+                  "color": "#2196f3",
+                  "settings": {},
+                  "_hash": 0.24213962748321516
+                },
+                {
+                  "name": "stat_energy_added",
+                  "type": "timeseries",
+                  "label": "stat_energy_added",
+                  "color": "#4caf50",
+                  "settings": {},
+                  "_hash": 0.4142112795387569
+                },
+                {
+                  "name": "stat_energy_saved",
+                  "type": "timeseries",
+                  "label": "stat_energy_saved",
+                  "color": "#f44336",
+                  "settings": {},
+                  "_hash": 0.9808389176414992
+                },
+                {
+                  "name": "stat_inefficient",
+                  "type": "timeseries",
+                  "label": "stat_inefficient",
+                  "color": "#ffc107",
+                  "settings": {},
+                  "_hash": 0.31881740715596874
+                },
+                {
+                  "name": "stat_optimal",
+                  "type": "timeseries",
+                  "label": "stat_optimal",
+                  "color": "#607d8b",
+                  "settings": {},
+                  "_hash": 0.23565209922885044
+                },
+                {
+                  "name": "stat_overheat",
+                  "type": "timeseries",
+                  "label": "stat_overheat",
+                  "color": "#9c27b0",
+                  "settings": {},
+                  "_hash": 0.8619967763845704
+                },
+                {
+                  "name": "stat_stable",
+                  "type": "timeseries",
+                  "label": "stat_stable",
+                  "color": "#8bc34a",
+                  "settings": {},
+                  "_hash": 0.4010350940336913
+                },
+                {
+                  "name": "stat_total",
+                  "type": "timeseries",
+                  "label": "stat_total",
+                  "color": "#3f51b5",
+                  "settings": {},
+                  "_hash": 0.5215272891863182
+                },
+                {
+                  "name": "stat_underheat",
+                  "type": "timeseries",
+                  "label": "stat_underheat",
+                  "color": "#e91e63",
+                  "settings": {},
+                  "_hash": 0.7429455959481016
+                },
+                {
+                  "name": "stat_unreachable",
+                  "type": "timeseries",
+                  "label": "stat_unreachable",
+                  "color": "#ffeb3b",
+                  "settings": {},
+                  "_hash": 0.6565709785104206
+                },
+                {
+                  "name": "stat_warning",
+                  "type": "timeseries",
+                  "label": "stat_warning",
+                  "color": "#03a9f4",
+                  "settings": {},
+                  "_hash": 0.7201639048166579
+                }
+              ],
+              "alarmFilterConfig": {
+                "statusList": [
+                  "ACTIVE"
+                ]
+              }
+            }
+          ],
+          "timewindow": {
+            "displayValue": "",
+            "selectedTab": 0,
+            "realtime": {
+              "realtimeType": 1,
+              "interval": 1000,
+              "timewindowMs": 60000,
+              "quickInterval": "CURRENT_DAY",
+              "hideInterval": false,
+              "hideLastInterval": false,
+              "hideQuickInterval": false
+            },
+            "history": {
+              "historyType": 0,
+              "interval": 1000,
+              "timewindowMs": 60000,
+              "fixedTimewindow": {
+                "startTimeMs": 1774187016024,
+                "endTimeMs": 1774273416024
+              },
+              "quickInterval": "CURRENT_DAY",
+              "hideInterval": false,
+              "hideLastInterval": false,
+              "hideFixedInterval": false,
+              "hideQuickInterval": false
+            },
+            "aggregation": {
+              "type": "AVG",
+              "limit": 25000
+            }
+          },
+          "showTitle": false,
+          "backgroundColor": "#fff",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "0px",
+          "settings": {
+            "useMarkdownTextFunction": false,
+            "markdownTextPattern": "<div style=\"font-family: 'Segoe UI', sans-serif; padding: 7px; color: #d1d4db;\">\r\n\r\n  <h2 style=\"text-align: center; color: #4facfe; margin-bottom: 4px;\">📊 DECISION SUPPORT REPORT</h2>\r\n  <p style=\"text-align: center; font-size: 0.9em; color: #888; margin-bottom: 6px;\">Live session analytics (AI + Physics model)</p>\r\n\r\n  <hr style=\"border: 0.5px solid #444; margin: 6px 0;\">\r\n\r\n  <!-- TOTAL -->\r\n  <table style=\"width: 100%; margin-top: 10px;\">\r\n    <tr>\r\n      <td style=\"font-size: 1.05em;\">⚙️ Всего событий:</td>\r\n      <td style=\"text-align: right; font-weight: bold; font-size: 1.2em; color: #fff;\">${stat_total}</td>\r\n    </tr>\r\n  </table>\r\n\r\n  <!-- STATUS -->\r\n  <div style=\"display: flex; justify-content: space-between; margin-top: 8px; background: #2c2f33; padding: 8px; border-radius: 5px;\">\r\n    <div style=\"text-align: center;\">\r\n      <div style=\"color: #43b581; font-size: 1.2em; font-weight: bold;\">${stat_stable}</div>\r\n      <div style=\"font-size: 0.75em; color: #888;\">Stable</div>\r\n    </div>\r\n    <div style=\"text-align: center;\">\r\n      <div style=\"color: #00aaff; font-size: 1.2em; font-weight: bold;\">${stat_optimal}</div>\r\n      <div style=\"font-size: 0.75em; color: #888;\">Optimal</div>\r\n    </div>\r\n    <div style=\"text-align: center;\">\r\n      <div style=\"color: #faa61a; font-size: 1.2em; font-weight: bold;\">${stat_unreachable}</div>\r\n      <div style=\"font-size: 0.75em; color: #888;\">Unreachable</div>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- DECISION -->\r\n  <h3 style=\"margin-top: 16px; font-size: 1em; color: #ffcc00;\">🌡️ ТЕМПЕРАТУРНЫЙ РЕЖИМ</h3>\r\n  <ul style=\"list-style: none; padding: 0; font-size: 0.95em; line-height: 1.5;\">\r\n    <li>🔴 Перегрев: <strong style=\"color: #ff4d4d;\">${stat_overheat}</strong></li>\r\n    <li>🔵 Недогрев: <strong style=\"color: #4facfe;\">${stat_underheat}</strong></li>\r\n    <li>💡 Неэффективность: <strong style=\"color: #f1c40f;\">${stat_inefficient}</strong></li>\r\n  </ul>\r\n\r\n  <!-- ENERGY -->\r\n  <h3 style=\"margin-top: 16px; font-size: 1em; color: #00ffcc;\">⚡ ЭНЕРГИЯ</h3>\r\n  <div style=\"background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%); padding: 10px; border-radius: 5px; border-left: 5px solid #00ffcc;\">\r\n    <div style=\"font-size: 0.85em; color: #bbb;\">Потенциал экономии:</div>\r\n    <div style=\"font-size: 1.3em; font-weight: bold; color: #fff;\">${stat_energy_saved} MJ</div>\r\n    <div style=\"font-size: 0.8em; margin-top: 4px; color: #ddd;\">Доп. нагрев: ${stat_energy_added} MJ</div>\r\n  </div>\r\n\r\n  <!-- SEVERITY -->\r\n  <h3 style=\"margin-top: 16px; font-size: 1em; color: #ff4d4d;\">🚨 РИСКИ</h3>\r\n  <div style=\"display: flex; gap: 8px;\">\r\n    <div style=\"flex: 1; background: #3c1e1e; padding: 7px; border-radius: 3px; text-align: center;\">\r\n      <div style=\"font-size: 0.75em; color: #ff4d4d;\">CRITICAL</div>\r\n      <div style=\"font-size: 1.2em; font-weight: bold;\">${stat_critical}</div>\r\n    </div>\r\n    <div style=\"flex: 1; background: #3c351e; padding: 7px; border-radius: 3px; text-align: center;\">\r\n      <div style=\"font-size: 0.75em; color: #faa61a;\">WARNING</div>\r\n      <div style=\"font-size: 1.2em; font-weight: bold;\">${stat_warning}</div>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- FOOTER -->\r\n  <p style=\"font-size: 0.7em; color: #555; margin-top: 12px; text-align: center;\">\r\n    Data resets on API restart\r\n  </p>\r\n\r\n</div>",
+            "markdownTextFunction": "return '# Some title\\n - Entity name: ' + data[0]['entityName'];",
+            "applyDefaultMarkdownStyle": true,
+            "markdownCss": ""
+          },
+          "title": "Markdown/HTML Card",
+          "showTitleIcon": false,
+          "iconColor": "rgba(0, 0, 0, 0.87)",
+          "iconSize": "24px",
+          "titleTooltip": "",
+          "dropShadow": true,
+          "enableFullscreen": true,
+          "widgetStyle": {},
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "showLegend": false,
+          "useDashboardTimewindow": true,
+          "displayTimewindow": true
+        },
+        "row": 0,
+        "col": 0,
+        "id": "7ad55248-1651-5a19-2c37-ae206def27b5"
+      }
+    },
+    "states": {
+      "default": {
+        "name": "[MET] Ladle Operator Panel",
+        "root": true,
+        "layouts": {
+          "main": {
+            "widgets": {
+              "7553455a-871d-a294-641b-7c83d34e45c7": {
+                "sizeX": 11,
+                "sizeY": 7,
+                "row": 0,
+                "col": 0
+              },
+              "7ad55248-1651-5a19-2c37-ae206def27b5": {
+                "sizeX": 13,
+                "sizeY": 12,
+                "row": 0,
+                "col": 11
+              }
+            },
+            "gridSettings": {
+              "layoutType": "default",
+              "backgroundColor": "#eeeeee",
+              "columns": 24,
+              "margin": 10,
+              "outerMargin": true,
+              "backgroundSizeMode": "100%"
+            }
+          }
+        }
+      }
+    },
+    "entityAliases": {
+      "89b7e898-f67b-87ec-7c30-f4ed5b613977": {
+        "id": "89b7e898-f67b-87ec-7c30-f4ed5b613977",
+        "alias": "Active_Ladle",
+        "filter": {
+          "type": "singleEntity",
+          "resolveMultiple": false,
+          "singleEntity": {
+            "entityType": "DEVICE",
+            "id": "45a168d0-25f4-11f1-8fd8-2b292c097180"
+          }
+        }
+      }
+    },
+    "filters": {},
+    "timewindow": {
+      "displayValue": "",
+      "hideAggregation": false,
+      "hideAggInterval": false,
+      "hideTimezone": false,
+      "selectedTab": 0,
+      "realtime": {
+        "realtimeType": 0,
+        "interval": 1000,
+        "timewindowMs": 60000,
+        "quickInterval": "CURRENT_DAY",
+        "hideInterval": false,
+        "hideLastInterval": false,
+        "hideQuickInterval": false
+      },
+      "history": {
+        "historyType": 0,
+        "interval": 1000,
+        "timewindowMs": 60000,
+        "fixedTimewindow": {
+          "startTimeMs": 1774106164014,
+          "endTimeMs": 1774192564014
+        },
+        "quickInterval": "CURRENT_DAY",
+        "hideInterval": false,
+        "hideLastInterval": false,
+        "hideFixedInterval": false,
+        "hideQuickInterval": false
+      },
+      "aggregation": {
+        "type": "AVG",
+        "limit": 25000
+      }
+    },
+    "settings": {
+      "stateControllerId": "entity",
+      "showTitle": false,
+      "showDashboardsSelect": true,
+      "showEntitiesSelect": true,
+      "showDashboardTimewindow": true,
+      "showDashboardExport": true,
+      "toolbarAlwaysOpen": true
+    }
+  },
+  "name": "[MET] Ladle Operator Panel",
+  "resources": []
+}

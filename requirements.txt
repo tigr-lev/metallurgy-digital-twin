@@ -1,0 +1,12 @@
+catboost
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+joblib
+fastapi
+uvicorn
+paho-mqtt
+requests==2.31.0
+python-dotenv

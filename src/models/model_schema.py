@@ -1,0 +1,13 @@
+EXPECTED_COLUMNS = [
+    "first_temp",
+    "total_arc_energy",
+    "total_heating_duration",
+    "Wire 1",
+    "gas_volume",
+    "process_duration",
+    "energy_rate",
+    "bulk_heat_markers",
+    "agg_coolants",
+    "mean_apparent_power",
+    "mean_power_factor",
+]
